@@ -1,0 +1,13 @@
+header {
+  background-color: aqua;
+}
+.Greeting {
+  background-color: gold;
+  padding: 10px;
+  text-align: center;
+}
+.App-state {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
