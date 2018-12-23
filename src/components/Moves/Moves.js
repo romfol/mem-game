@@ -1,7 +1,5 @@
 import React from 'react';
 
-const Moves = () => {
-  return <span>Moves done: </span>;
+export const Moves = props => {
+  return <span>Moves done: {props.moves}</span>;
 };
-
-export default Moves;

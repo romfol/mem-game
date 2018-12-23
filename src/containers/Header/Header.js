@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { timerAction, startGame } from '../../actions/pageActions';
+import { Timer, Moves, Reset } from '../../components';
 
-import Timer from '../../components/Timer/Timer';
-import Moves from '../../components/Moves/Moves';
-import Reset from '../../components/Reset/Reset';
 import './styles.css';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { seconds: 0 };
-  }
-
   componentDidMount() {
-    setInterval(() => this.clock(), 1000);
-  }
-
-  clock() {
-    this.setState(state => {
-      return { seconds: ++state.seconds };
-    });
+    setInterval(() => this.props.timerAction(this.props.seconds), 1000);
   }
 
   render() {
+    const { seconds, moves, cards, startGame } = this.props;
+
     return (
       <header>
         <div className="Greeting">Let's play memory game!</div>
         <div className="App-state">
-          <Timer seconds={this.state.seconds} />
-          <Moves />
-          <Reset />
+          <Timer seconds={seconds} />
+          <Moves moves={moves} />
+          <Reset startGame={startGame} cards={cards} />
         </div>
       </header>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = store => ({
+  seconds: store.seconds,
+  moves: store.moves,
+  cards: store.cards,
+});
+
+const mapDispatchToProps = dispatch => ({
+  timerAction: seconds => dispatch(timerAction(seconds)),
+  startGame: cards => dispatch(startGame(cards)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
