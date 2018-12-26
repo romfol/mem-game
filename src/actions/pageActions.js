@@ -16,4 +16,8 @@ export const startGame = cards => {
   };
 };
 
-export const selectItem = item => ({ type: 'SELECT', payload: item });
+export const selectItem = (id, color) => ({ type: 'SELECT', payload: id, selectedColor: color });
+
+export const matched = item => ({ type: 'MATCH', payload: item });
+
+export const addShowed = items => ({ type: 'SWOWED', payload: items });

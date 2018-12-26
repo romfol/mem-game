@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { YouWon } from '../../components';
 import { startGame, movesAction, selectItem } from '../../actions/pageActions';
 import { connect } from 'react-redux';
 
@@ -9,24 +10,36 @@ class Game extends Component {
     this.props.startGame(this.props.cards);
   }
   handleClick = e => {
-    this.props.movesAction(this.props.moves);
-    this.props.selectItem(e.target.getAttribute('item-color'));
+    this.props.selectItem(
+      parseInt(e.currentTarget.getAttribute('item-id')),
+      e.currentTarget.getAttribute('item-color')
+    );
   };
 
   render() {
-    console.log('render game');
-    let items = this.props.cards.map(item => {
+    let { cards, showed, checked, matched } = this.props;
+    let className = 'flip-card-inner';
+    if (showed.length === 16) {
+      return <YouWon />;
+    }
+
+    let items = cards.map(item => {
       const { color, id } = item;
+
+      if (showed.includes(id) || checked.includes(id) || matched.includes(id)) {
+        className += ' innercardshow';
+      } else className = 'flip-card-inner';
+
       return (
         <div className="flip-card" key={id}>
-          <div className="flip-card-inner">
+          <div
+            className={className}
+            onClickCapture={this.handleClick}
+            item-id={id}
+            item-color={color}
+          >
             <div className="flip-card-front" />
-            <div
-              className="flip-card-back"
-              style={{ backgroundColor: color }}
-              onClick={this.handleClick}
-              item-color={color}
-            />
+            <div className="flip-card-back" style={{ backgroundColor: color }} />
           </div>
         </div>
       );
@@ -39,13 +52,16 @@ class Game extends Component {
 const mapStateToProps = store => ({
   moves: store.moves,
   cards: store.cards,
-  cardsToggle: store.cardsToggle,
+  // cardsToggle: store.cardsToggle,
+  matched: store.matched,
+  showed: store.showed,
+  checked: store.checked,
 });
 
 const mapDispatchToProps = dispatch => ({
   movesAction: moves => dispatch(movesAction(moves)),
   startGame: cards => dispatch(startGame(cards)),
-  selectItem: item => dispatch(selectItem(item)),
+  selectItem: (id, color) => dispatch(selectItem(id, color)),
 });
 
 export default connect(

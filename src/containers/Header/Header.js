@@ -15,7 +15,7 @@ class Header extends Component {
 
     return (
       <header>
-        <div className="Greeting">Let's play memory game!</div>
+        <div className="Greeting">Let's train memory!</div>
         <div className="App-state">
           <Timer seconds={seconds} />
           <Moves moves={moves} />
