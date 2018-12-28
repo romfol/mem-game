@@ -67,9 +67,7 @@ const initialState = {
       id: 16,
     },
   ],
-  //cardsToggle: false,
   selectedColor: '',
-  id: '',
   matched: [],
   showed: [],
   checked: [],
@@ -87,7 +85,7 @@ export function rootReducer(state = initialState, action) {
         moves: 0,
         seconds: 0,
         cards: action.payload,
-        //cardsToggle: !state.cardsToggle,
+
         checked: [],
         showed: [],
       };

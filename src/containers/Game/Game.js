@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { YouWon } from '../../components';
+import { Redirect } from 'react-router';
 import { startGame, movesAction, selectItem } from '../../actions/pageActions';
 import { connect } from 'react-redux';
 
@@ -20,7 +20,7 @@ class Game extends Component {
     let { cards, showed, checked, matched } = this.props;
     let className = 'flip-card-inner';
     if (showed.length === 16) {
-      return <YouWon />;
+      return <Redirect to="/victory" />;
     }
 
     let items = cards.map(item => {

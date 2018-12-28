@@ -7,7 +7,11 @@ import './styles.css';
 
 class Header extends Component {
   componentDidMount() {
-    setInterval(() => this.props.timerAction(this.props.seconds), 1000);
+    this.timer = setInterval(() => this.props.timerAction(this.props.seconds), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   render() {

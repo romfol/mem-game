@@ -3,7 +3,7 @@ main {
 	flex-flow: column wrap;
   justify-content: space-evenly;
   align-items: center;
-  height: 565px;
+  height: 100vh;
 }
 
 .flip-card {
