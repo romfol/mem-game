@@ -1,6 +1,5 @@
-.Victory-text {
-  height: 100vh;
-    margin: 0;
+.Victory {
+    height: 100vh;
     padding: 60px;
     text-align: center;
     background: #1abc9c;
@@ -10,6 +9,8 @@
 
 .Replay-button {
   font-weight: 700;
-  margin-top: 50px
+  margin-top: 50px;
+  color:darkblue;
+  padding: 20px;
 }
 

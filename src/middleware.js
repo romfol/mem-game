@@ -7,9 +7,8 @@ export const middleware = store => next => action => {
       store.dispatch(addShowed(showed));
       store.dispatch(movesAction(store.getState().moves));
     }
-    let selected = store.getState().selectedColor;
     //matching
-    if (selected === action.selectedColor) {
+    if (store.getState().selectedColor === action.selectedColor) {
       if (store.getState().checked.length) {
         let arr = store
           .getState()
@@ -19,5 +18,6 @@ export const middleware = store => next => action => {
       }
     }
   }
+
   return next(action);
 };

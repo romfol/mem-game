@@ -14,7 +14,7 @@ class Victory extends Component {
     }
 
     return (
-      <div className="Victory-text">
+      <div className="Victory">
         <div>
           <div>Congratulations! </div>You won in {seconds} seconds and {moves} moves
         </div>
