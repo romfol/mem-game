@@ -10,7 +10,6 @@ class Game extends Component {
     this.props.startGame(this.props.cards);
   }
   handleClick = e => {
-    e.stopPropagation();
     this.props.selectItem(
       parseInt(e.currentTarget.getAttribute('item-id')),
       e.currentTarget.getAttribute('item-color')

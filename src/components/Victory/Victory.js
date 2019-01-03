@@ -9,14 +9,15 @@ class Victory extends Component {
   render() {
     const { seconds, moves, cards, startGame } = this.props;
 
-    if (this.state.redirect === true) {
+    if (this.state.redirect) {
       return <Redirect to="/" />;
     }
 
     return (
       <div className="Victory">
         <div>
-          <div>Congratulations! </div>You won in {seconds} seconds and {moves} moves
+          <div>Congratulations! </div>
+          You won in {seconds} seconds and {moves} moves
         </div>
         <button
           className="Replay-button"
