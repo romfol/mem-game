@@ -1,1 +1,1 @@
-yarn \$\$ yarn start
+run dev server - type "yarn && yarn start"

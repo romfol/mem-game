@@ -85,7 +85,6 @@ export function rootReducer(state = initialState, action) {
         moves: 0,
         seconds: 0,
         cards: action.payload,
-
         checked: [],
         showed: [],
       };
