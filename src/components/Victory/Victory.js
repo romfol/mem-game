@@ -17,7 +17,7 @@ class Victory extends Component {
       <div className="Victory">
         <div>
           <div>Congratulations! </div>
-          You won in {seconds} seconds and {moves} moves
+          You win in {seconds} seconds and {moves} moves
         </div>
         <button
           className="Replay-button"

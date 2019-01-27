@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 import './styles.css';
 
 class Game extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.startGame(this.props.cards);
   }
   handleClick = e => {
-    this.props.selectItem(
-      parseInt(e.currentTarget.getAttribute('item-id')),
-      e.currentTarget.getAttribute('item-color')
-    );
+    const id = parseInt(e.currentTarget.getAttribute('item-id'));
+    if (!this.props.checked.includes(id)) {
+      this.props.selectItem(id, e.currentTarget.getAttribute('item-color'));
+    }
   };
 
   render() {
